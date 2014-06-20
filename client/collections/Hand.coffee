@@ -3,9 +3,20 @@ class window.Hand extends Backbone.Collection
   model: Card
 
   initialize: (array, @deck, @isDealer) ->
-
+    @finalScore
   hit: ->
     @add(@deck.pop()).last()
+
+  stand: ->
+    if @scores().length > 1
+      if @scores()[1] > 21
+        @finalScore = @scores()[0]
+      else
+        @finalScore = @scores()[1]
+    else
+      @finalScore = @scores()[0]
+
+
 
   scores: ->
     # The scores are an array of potential scores.
