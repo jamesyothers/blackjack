@@ -13,6 +13,9 @@ class window.App extends Backbone.Model
       else
         @get('dealerHand').models[0].flip()
         @dealForDealer();
+    @get('playerHand').on 'busted', =>
+      @set 'winner', 'dealer'
+      @trigger 'winner', @get 'winner'
 
 
   dealForDealer: ->
