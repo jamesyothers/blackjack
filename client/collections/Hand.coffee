@@ -8,6 +8,11 @@ class window.Hand extends Backbone.Collection
     @add(@deck.pop()).last()
 
   stand: ->
+    @getScore()
+    @trigger 'stand', @
+
+
+  getScore: ->
     if @scores().length > 1
       if @scores()[1] > 21
         @finalScore = @scores()[0]
@@ -15,9 +20,6 @@ class window.Hand extends Backbone.Collection
         @finalScore = @scores()[1]
     else
       @finalScore = @scores()[0]
-
-    @trigger 'stand', @
-
 
   scores: ->
     # The scores are an array of potential scores.
