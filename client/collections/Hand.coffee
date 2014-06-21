@@ -14,7 +14,7 @@ class window.Hand extends Backbone.Collection
 
   stand: ->
     @getScore()
-    @trigger 'stand', @
+    @trigger 'stand'
 
 
   getScore: ->

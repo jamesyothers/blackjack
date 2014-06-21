@@ -22,8 +22,11 @@ class window.App extends Backbone.Model
 
   dealForDealer: ->
     dealerHand = @get('dealerHand')
-    dealerHand.hit() while @get('dealerHand').getScore() < 17
     dealerScore = @get('dealerHand').getScore()
+    playerHand = @get('playerHand')
+    playerScore = @get('playerHand').getScore()
+
+    dealerHand.hit() while @get('dealerHand').getScore() < 17 or @get('playerHand').getScore() > @get('dealerHand').getScore()
     if dealerScore <= 21
       playerScore = @get('playerHand').getScore()
 
@@ -32,7 +35,17 @@ class window.App extends Backbone.Model
       else if dealerScore < playerScore
         @set 'winner', 'player'
       else
-        @set 'winner', 'push'
+        if dealerScore == 21
+          if dealerHand.length == 2 and playerHand.length == 2
+            @set 'winner', 'push'
+          else if dealerHand.length == 2
+            @set 'winner', 'dealer'
+          else if playerHand.length == 2
+            @set 'winner', 'player'
+          else
+            @set 'winner', 'push'
+        else
+          @set 'winner', 'push'
 
       @trigger 'winner', @get 'winner'
 
