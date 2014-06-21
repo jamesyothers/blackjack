@@ -16,6 +16,7 @@ class window.Hand extends Backbone.Collection
     else
       @finalScore = @scores()[0]
 
+    @trigger 'stand', @
 
 
   scores: ->
