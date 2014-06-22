@@ -8,6 +8,7 @@ class window.Deck extends Backbone.Collection
       # create a Card instance for each card
       # with properties of rank (0-12) and
       # suit (0-3)
+      # on an instance of Card it passes in a parameters object consisting of rank and suit
       new Card
         rank: card % 13
         suit: Math.floor(card / 13)
