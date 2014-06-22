@@ -6,6 +6,9 @@ class window.HandView extends Backbone.View
   template: _.template '<h2><% if(isDealer){ %>Dealer<% }else{ %>You<% } %> (<span class="score"></span>)</h2>'
 
   initialize: ->
+    # on any change to the hand collection, re-render
+    # this is heavy-handed and a limitation in Backbone
+    # do not want to re-render everything if something small changes
     @collection.on 'add remove change', => @render()
     @render()
 
