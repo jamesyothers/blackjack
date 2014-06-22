@@ -1,6 +1,6 @@
 class window.Card extends Backbone.Model
 
-  initialize: (params) ->
+  initialize: (params) =>
     @set
       revealed: true
       value: if !params.rank or 10 < params.rank then 10 else params.rank
@@ -11,6 +11,9 @@ class window.Card extends Backbone.Model
         when 11 then 'Jack'
         when 12 then 'Queen'
         else params.rank
+    @set
+      cardFront: @get('rankName') + '-' + @get('suitName') + '.png'
+      cardBack: 'card-back.png'
 
   flip: ->
     @set 'revealed', !@get 'revealed'

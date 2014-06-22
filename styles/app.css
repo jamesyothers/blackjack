@@ -1,16 +1,39 @@
 .card {
   float: left;
   border: solid 1px black;
-  width: 100px;
+  width: 200px;
   border-radius: 5px;
-  height: 140px;
+  height: 280px;
   margin-right: 20px;
 }
 
 .covered {
+  content: url('../img/card-back.png');
+}
+
+.revealed {
   background-color: black;
 }
 
 .hand {
   overflow: auto;
+}
+
+html {
+  background: url('http://images7.alphacoders.com/449/449378.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+h2 {
+  font-size: 40px;
+  color: white;
+}
+
+.winner {
+  margin-top: 40px;
+  font-size: 40px;
+  color: white;
 }

@@ -12,40 +12,37 @@ class window.App extends Backbone.Model
       @dealForDealer();
 
     @get('playerHand').on 'busted', =>
-      @set 'winner', 'dealer'
+      @set 'winner', 'Dealer Wins!'
       @trigger 'winner', @get 'winner'
 
     @get('dealerHand').on 'busted', =>
-      @set 'winner', 'player'
+      @set 'winner', 'You Win!'
       @trigger 'winner', @get 'winner'
 
 
   dealForDealer: ->
-    dealerHand = @get('dealerHand')
-    dealerScore = @get('dealerHand').getScore()
     playerHand = @get('playerHand')
     playerScore = @get('playerHand').getScore()
-
-    dealerHand.hit() while @get('dealerHand').getScore() < 17 or @get('playerHand').getScore() > @get('dealerHand').getScore()
+    @get('dealerHand').hit() while @get('dealerHand').getScore() < 17 or playerScore > @get('dealerHand').getScore()
+    dealerScore = @get('dealerHand').getScore()
+    dealerHand = @get('dealerHand');
     if dealerScore <= 21
-      playerScore = @get('playerHand').getScore()
-
       if dealerScore > playerScore
-        @set 'winner', 'dealer'
+        @set 'winner', 'Dealer Wins!'
       else if dealerScore < playerScore
-        @set 'winner', 'player'
+        @set 'winner', 'You Win!'
       else
         if dealerScore == 21
           if dealerHand.length == 2 and playerHand.length == 2
-            @set 'winner', 'push'
+            @set 'winner', "It's A Push!"
           else if dealerHand.length == 2
-            @set 'winner', 'dealer'
+            @set 'winner', 'Dealer Wins'
           else if playerHand.length == 2
-            @set 'winner', 'player'
+            @set 'winner', 'You Win!'
           else
-            @set 'winner', 'push'
+            @set 'winner', "It's A Push!"
         else
-          @set 'winner', 'push'
+          @set 'winner', "It's A Push!"
 
       @trigger 'winner', @get 'winner'
 
