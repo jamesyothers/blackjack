@@ -28,12 +28,22 @@ html {
 }
 
 h2 {
-  font-size: 40px;
-  color: white;
+  font-size: 30px;
+  color: red;
 }
 
 .winner {
-  margin-top: 40px;
-  font-size: 40px;
-  color: white;
+  margin-top: 30px;
+  font-size: 30px;
+  color: red;
 }
+
+button {
+    margin-top: 20px;
+    width: 70px;
+    height: 30px;
+    color: red;
+    font-size: 20px;
+}
+
+
